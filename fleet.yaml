@@ -1,0 +1,33 @@
+# fleet.yaml
+
+# General Bundle Configuration
+defaultNamespace: fleet-default # Default namespace for resources if not specified
+
+# Helm Configuration
+helm:
+  # Specify custom values files from the repo (relative paths)
+  valuesFiles:
+    - values.yaml
+    #- values-dev.yaml 
+
+  # Optional: specify a custom release name, otherwise one is generated
+  # releaseName: my-app-release
+
+# Targeting and Customization (Optional)
+targets:
+  # This section defines which clusters the configuration applies to.
+  - name: dev-clusters # User-friendly name
+    clusterSelector: # Match clusters using labels
+      matchLabels:
+        env: dev
+        region: us-east
+    # You can provide additional values specifically for these targets
+    values:
+      replicaCount: 1
+
+  - name: prod-clusters
+    clusterSelector:
+      matchLabels:
+        env: prod
+    values:
+      replicaCount: 3
