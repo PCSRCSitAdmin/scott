@@ -1,6 +1,6 @@
 questions:
 - variable: cluster.name
-  default: mycluster
+  default: scott-cluster
   description: "Specify the name of the cluster"
   label: "Cluster Name"
   required: true
@@ -13,7 +13,7 @@ questions:
   type: cloudcredential
   group: "General"
 - variable: cloudprovider
-  default: custom
+  default: vsphere
   description: "Specify Infrastructure provider for underlying nodes"
   label: "Infrastructure Provider"
   type: enum
@@ -79,7 +79,7 @@ questions:
     type: multiline
     group: "Monitoring"
 - variable: nodepools.0.name
-  default:
+  default: scott_pool_0
   description: "Specify nodepool name"
   type: string
   label: "Nodepool name"
